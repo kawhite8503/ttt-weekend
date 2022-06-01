@@ -10,11 +10,11 @@ let winner//if anyone has won yet, or if a tie has occurred
 
 /*------------------------ Cached Element References ------------------------*/
 
-const squareEls = document.querySelector('.square')
+const squareEls = document.querySelectorAll('.square')
 const messageEl = document.querySelector('#message')
 
-console.log(squareEls)
-console.log(messageEl)
+// console.log(squareEls)
+// console.log(messageEl)
 /*----------------------------- Event Listeners -----------------------------*/
 
 
@@ -27,26 +27,26 @@ function init(){
   turn = 1 
   winner = null
   render()
-}
+  // console.log(board)
+};
 
 function render (){
-  board.forEach(square, idx){
+  board.forEach(function(square, index){
     if(square === 1) {
-      squareEls[idx].textcontent = 'X'
+      squareEls[index].textContent = 'X'
     } else if (square === -1) {
-      squareEls[idx].textcontent = "O"
-    } else {
-      squareEls[idx].textcontent = ''
-    }
+      squareEls[index].textContent = "O"
   }
+});
+
 
   if (winner === null) {
     return (turn === 1 ? messageEl.textcontent = `Player ${turn}'s turn` : messageEl.textcontent = `Player ${turn}'s turn`)
   } else if (winner === 'T') {
     return messageEl.textcontent = "It's a tie!!"
-  } else (winner !== null){
+  } else if (winner !== null){
     return messageEl.textcontent = `Congratulations!! Player ${turn} won!!`
-  }
+  };
 }
 
 
