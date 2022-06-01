@@ -56,6 +56,17 @@ function changeTurn(){
 
 
 function handleClick(evt){
-  const sqIdx = evt.target.id.slice(2)
+  
+  const sqIdx = parseInt(evt.target.id.slice(2))
   console.log(sqIdx)
+  
+  if (board[sqIdx] !== null) {
+      return
+    }
+    if (winner !==null) {
+      return
+    }
+    board.splice(sqIdx, 1, turn)
+    console.log(board)
+  
 }
