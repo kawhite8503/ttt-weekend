@@ -56,5 +56,6 @@ function changeTurn(){
 
 
 function handleClick(evt){
-  console.log('Click works!')
+  const sqIdx = evt.target.id.slice(2)
+  console.log(sqIdx)
 }
