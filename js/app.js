@@ -26,6 +26,7 @@ function init(){
   board = [null, null, null, null, null, null, null, null, null]
   turn = 1 
   winner = null
+  render()
 }
 
 function render (){
@@ -39,15 +40,18 @@ function render (){
     }
   }
 
+  if (winner === null) {
+    return (turn === 1 ? messageEl.textcontent = `Player ${turn}'s turn` : messageEl.textcontent = `Player ${turn}'s turn`)
+  } else if (winner === 'T') {
+    return messageEl.textcontent = "It's a tie!!"
+  } else (winner !== null){
+    return messageEl.textcontent = `Congratulations!! Player ${turn} won!!`
+  }
 }
+
 
 function changeTurn(){
   turn = turn * -1
 }
 
-function renderMessage (){
-  if(winner === null) {
-    return messageEl = `Now player ${turn}'s turn!`
-  }
-}
 
