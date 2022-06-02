@@ -43,15 +43,15 @@ function render (){
 
 
 if (winner === null) {
-    const playerTurn = turn === 1 ? "Player 1" : "Player 2"
-    messageEl.textContent = playerTurn + "'s turn!"
-  } else {
-    const playerWin = turn === 1 ? "Player 2" : "Player 1"
-    console.log('else')
-    return messageEl.textContent = `Congratulations!! ${playerWin} won!!`
-  };
+  const playerTurn = turn === 1 ? "Player 1" : "Player 2"
+  messageEl.textContent = playerTurn + "'s turn!"
+} else  if (winner === 'T'){
+  return messageEl.textContent = "Cat's game! Try again!"
+} else {
+  const playerWin = turn === 1 ? "Player 2" : "Player 1"
+  return messageEl.textContent = `Congratulations ${playerWin}! You are the winner!!`
+};
 }
-
 
 
 
@@ -80,14 +80,18 @@ function getWinner(){
     // console.log(combo[0], combo[1], combo[2])
     if (board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
       winner = 1
-      console.log('winner is X')
+      // console.log('winner is X')
     }
     if (board[combo[0]] + board[combo[1]] + board[combo[2]] === -3){
       winner = -1
-      console.log('winner is O')
+      // console.log('winner is O')
     }
+    
+    if (!board.includes(null)){
+      winner = 'T'
+    }
+
   })
-// console.log(winner)
 }
 
 // if(total === 3){
