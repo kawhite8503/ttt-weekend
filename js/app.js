@@ -72,17 +72,25 @@ function handleClick(evt){
 }
 
 
+// let winningCombos = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+
 function getWinner(){
-  winningCombos.forEach(function(element, idx){
-  let total = 0
-  element.forEach(function(item,idx){
-    total += item[idx]
-    if(total === 3){
-      winner === 1
-    } else if (total === -3){
-      winner === -1
+  winningCombos.forEach(function(combo){
+    // console.log(combo[0], combo[1], combo[2])
+    if (board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
+      console.log('winner')
     }
-})
-})
-console.log(winner)
+  })
+// console.log(winner)
 }
+
+// if(total === 3){
+//   winner === 1
+// } else if (total === -3){
+//   winner === -1
+// }
+// board.forEach(function(index){
+//   if (index !== null) {
+//     winner === 'T'
+//   }
+// })
