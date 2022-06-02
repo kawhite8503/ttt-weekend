@@ -32,20 +32,22 @@ function init(){
 };
 
 function render (){
+  
   board.forEach(function(square, index){
     if(square === 1) {
       squareEls[index].textContent = 'X'
     } else if (square === -1) {
       squareEls[index].textContent = "O"
-  }
+    }
 });
-
+  
   if (winner === null) {
-    return (turn === 1 ? messageEl.textcontent = `Player ${turn}'s turn` : messageEl.textcontent = `Player ${turn}'s turn`)
+    const playerTurn = turn === 1 ? "Player 1" : "Player 2"
+    messageEl.textContent = playerTurn + "'s turn!"
   } else if (winner === 'T') {
     return messageEl.textcontent = "It's a tie!!"
-  } else if (winner !== null){
-    return messageEl.textcontent = `Congratulations!! Player ${turn} won!!`
+  } else {
+    return messageEl.textcontent = `Congratulations!! ${playerTurn} won!!`
   };
 }
 
@@ -53,9 +55,8 @@ function render (){
 
 
 function handleClick(evt){
-  
   const sqIdx = parseInt(evt.target.id.slice(2))
-  console.log(sqIdx)
+  // console.log(sqIdx)
   
   if (board[sqIdx] !== null) {
     return
@@ -64,8 +65,24 @@ function handleClick(evt){
     return
   }
   board.splice(sqIdx, 1, turn)
-  console.log(board)
-  
   turn = turn * -1
 
+  getWinner()
+  render()
+}
+
+
+function getWinner(){
+  winningCombos.forEach(function(element, idx){
+  let total = 0
+  element.forEach(function(item,idx){
+    total += item[idx]
+    if(total === 3){
+      winner === 1
+    } else if (total === -3){
+      winner === -1
+    }
+})
+})
+console.log(winner)
 }
