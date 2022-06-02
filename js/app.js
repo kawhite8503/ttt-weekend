@@ -40,14 +40,15 @@ function render (){
       squareEls[index].textContent = "O"
     }
 });
-  
-  if (winner === null) {
+
+
+if (winner === null) {
     const playerTurn = turn === 1 ? "Player 1" : "Player 2"
     messageEl.textContent = playerTurn + "'s turn!"
-  } else if (winner === 'T') {
-    return messageEl.textcontent = "It's a tie!!"
   } else {
-    return messageEl.textcontent = `Congratulations!! ${playerTurn} won!!`
+    const playerWin = turn === 1 ? "Player 2" : "Player 1"
+    console.log('else')
+    return messageEl.textContent = `Congratulations!! ${playerWin} won!!`
   };
 }
 
@@ -78,7 +79,12 @@ function getWinner(){
   winningCombos.forEach(function(combo){
     // console.log(combo[0], combo[1], combo[2])
     if (board[combo[0]] + board[combo[1]] + board[combo[2]] === 3){
-      console.log('winner')
+      winner = 1
+      console.log('winner is X')
+    }
+    if (board[combo[0]] + board[combo[1]] + board[combo[2]] === -3){
+      winner = -1
+      console.log('winner is O')
     }
   })
 // console.log(winner)
