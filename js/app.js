@@ -50,9 +50,6 @@ function render (){
 }
 
 
-function changeTurn(){
-  turn = turn * -1
-}
 
 
 function handleClick(evt){
@@ -61,12 +58,14 @@ function handleClick(evt){
   console.log(sqIdx)
   
   if (board[sqIdx] !== null) {
-      return
-    }
-    if (winner !==null) {
-      return
-    }
-    board.splice(sqIdx, 1, turn)
-    console.log(board)
+    return
+  }
+  if (winner !==null) {
+    return
+  }
+  board.splice(sqIdx, 1, turn)
+  console.log(board)
   
+  turn = turn * -1
+
 }
